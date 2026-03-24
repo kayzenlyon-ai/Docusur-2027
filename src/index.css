@@ -39,47 +39,81 @@
   --radius: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  @theme inline {
-    --color-border: hsl(220deg 18% 15%);
-    --color-input: hsl(220deg 18% 15%);
-    --color-ring: hsl(215deg 90% 65%);
-    --color-background: hsl(222deg 25% 6%);
-    --color-foreground: hsl(210deg 30% 96%);
-    --color-primary: hsl(215deg 90% 65%);
-    --color-primary-foreground: hsl(222deg 25% 6%);
-    --color-secondary: hsl(220deg 18% 15%);
-    --color-secondary-foreground: hsl(210deg 30% 96%);
-    --color-destructive: hsl(0deg 100% 60%);
-    --color-destructive-foreground: hsl(0deg 0% 100%);
-    --color-muted: hsl(220deg 18% 15%);
-    --color-muted-foreground: hsl(215deg 20% 75%);
-    --color-accent: hsl(0deg 100% 60%);
-    --color-accent-foreground: hsl(0deg 0% 100%);
-    --color-popover: hsl(222deg 20% 10%);
-    --color-popover-foreground: hsl(210deg 30% 96%);
-    --color-card: hsl(222deg 20% 10%);
-    --color-card-foreground: hsl(210deg 30% 96%);
-    --color-sidebar-background: hsl(222deg 25% 8%);
-    --color-sidebar-foreground: hsl(210deg 30% 92%);
-    --color-sidebar-primary: hsl(215deg 80% 55%);
-    --color-sidebar-primary-foreground: hsl(210deg 30% 92%);
-    --color-sidebar-accent: hsl(220deg 18% 18%);
-    --color-sidebar-accent-foreground: hsl(210deg 30% 92%);
-    --color-sidebar-border: hsl(220deg 18% 18%);
-    --color-sidebar-ring: hsl(215deg 80% 55%);
-    --color-kayzen-green: hsl(145deg 45% 50%);
-    --color-kayzen-glow: hsl(215deg 80% 55%);
-    --color-surface-elevated: hsl(222deg 20% 12%);
-    --color-surface-glass: hsl(222deg 20% 10%);
-    --color-dropzone-bg: hsl(215deg 20% 12%);
-    --color-dropzone-border: hsl(215deg 20% 28%);
-  }
+:root {
+  --border: 220deg 13% 88%;
+  --input: 220deg 13% 88%;
+  --ring: 220deg 100% 15%;
+  --background: 0deg 0% 100%;
+  --foreground: 220deg 30% 10%;
+  --primary: 220deg 100% 15%;
+  --primary-foreground: 0deg 0% 100%;
+  --secondary: 220deg 14% 96%;
+  --secondary-foreground: 220deg 100% 15%;
+  --destructive: 0deg 100% 45%;
+  --destructive-foreground: 0deg 0% 100%;
+  --muted: 220deg 14% 94%;
+  --muted-foreground: 220deg 20% 35%;
+  --accent: 0deg 100% 45%;
+  --accent-foreground: 0deg 0% 100%;
+  --popover: 0deg 0% 100%;
+  --popover-foreground: 220deg 30% 10%;
+  --card: 220deg 14% 96%;
+  --card-foreground: 220deg 30% 10%;
+  --sidebar-background: 0deg 0% 98%;
+  --sidebar-foreground: 220deg 30% 10%;
+  --sidebar-primary: 215deg 80% 48%;
+  --sidebar-primary-foreground: 0deg 0% 100%;
+  --sidebar-accent: 220deg 14% 96%;
+  --sidebar-accent-foreground: 220deg 30% 10%;
+  --sidebar-border: 220deg 13% 91%;
+  --sidebar-ring: 215deg 80% 48%;
+  --kayzen-green: 145deg 45% 42%;
+  --kayzen-glow: 215deg 80% 48%;
+  --surface-elevated: 220deg 14% 96%;
+  --surface-glass: 220deg 14% 96%;
+  --dropzone-bg: 215deg 40% 97%;
+  --dropzone-border: 215deg 30% 82%;
+}
+
+.dark {
+  --border: 220deg 18% 15%;
+  --input: 220deg 18% 15%;
+  --ring: 215deg 90% 65%;
+  --background: 222deg 25% 6%;
+  --foreground: 210deg 30% 96%;
+  --primary: 215deg 90% 65%;
+  --primary-foreground: 222deg 25% 6%;
+  --secondary: 220deg 18% 15%;
+  --secondary-foreground: 210deg 30% 96%;
+  --destructive: 0deg 100% 60%;
+  --destructive-foreground: 0deg 0% 100%;
+  --muted: 220deg 18% 15%;
+  --muted-foreground: 215deg 20% 75%;
+  --accent: 0deg 100% 60%;
+  --accent-foreground: 0deg 0% 100%;
+  --popover: 222deg 20% 10%;
+  --popover-foreground: 210deg 30% 96%;
+  --card: 222deg 20% 10%;
+  --card-foreground: 210deg 30% 96%;
+  --sidebar-background: 222deg 25% 8%;
+  --sidebar-foreground: 210deg 30% 92%;
+  --sidebar-primary: 215deg 80% 55%;
+  --sidebar-primary-foreground: 210deg 30% 92%;
+  --sidebar-accent: 220deg 18% 18%;
+  --sidebar-accent-foreground: 210deg 30% 92%;
+  --sidebar-border: 220deg 18% 18%;
+  --sidebar-ring: 215deg 80% 55%;
+  --kayzen-green: 145deg 45% 50%;
+  --kayzen-glow: 215deg 80% 55%;
+  --surface-elevated: 222deg 20% 12%;
+  --surface-glass: 222deg 20% 10%;
+  --dropzone-bg: 215deg 20% 12%;
+  --dropzone-border: 215deg 20% 28%;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   html {
@@ -87,7 +121,10 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-display: swap;
   }
@@ -98,14 +135,14 @@
   }
 
   h1, h2, h3 {
-    @apply text-primary;
+    color: hsl(var(--primary));
   }
 
   .title-alternating span:nth-child(even) {
-    @apply text-destructive;
+    color: hsl(var(--destructive));
   }
   .title-alternating span:nth-child(odd) {
-    @apply text-primary;
+    color: hsl(var(--primary));
   }
 }
 
