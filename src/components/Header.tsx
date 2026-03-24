@@ -1,16 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@/lib/use-theme";
-import { 
-  Moon, Sun, ShieldCheck, ChevronDown, Menu, X, ArrowRight, 
-  FileText, PenTool, Shield, ArrowRightLeft, ScanText, 
-  Video, Image as ImageIcon, Music, FileCode, Sparkles, LayoutGrid
-} from "lucide-react";
+import { Moon, Sun, ShieldCheck, Menu, X, ArrowRight, Shield, LayoutGrid } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ALL_TOOLS, Tool, ToolCategory } from "@/components/ToolGrid";
+import { Tool } from "@/components/ToolGrid";
 import { AccessibilityToggle } from "@/components/AccessibilityToggle";
-import { DocuSur } from "./DocuSur";
-import type { LucideIcon } from "lucide-react";
 import docusurLogo from "@/assets/docusur-logo.webp";
 
 interface HeaderProps {
@@ -88,6 +82,25 @@ export function Header({ onSelectTool }: HeaderProps) {
             aria-label="Changer de thème"
           >
             {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {/* Mobile menu toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <AccessibilityToggle />
+          <button
+            onClick={toggle}
+            className="rounded-xl p-2.5 text-muted-foreground transition-all duration-200 hover:bg-secondary hover:text-primary active:scale-95"
+            aria-label="Changer de thème"
+          >
+            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="rounded-xl p-2.5 text-muted-foreground transition-all duration-200 hover:bg-secondary hover:text-primary active:scale-95"
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
