@@ -1,0 +1,5 @@
+{
+  "name": "Blaze Transmute",
+  "description": "Outil professionnel de transformation de documents (PDF, images, audio, vidéo) fonctionnant 100% localement dans le navigateur.",
+  "requestFramePermissions": []
+}
